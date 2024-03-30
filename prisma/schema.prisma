@@ -20,9 +20,14 @@ enum InfluencerType {
 }
 
 model Influencer {
-  id         Int    @id @default(autoincrement())
-  influencer String
-  year       Int
-  type       InfluencerType
-  reach_rate Int
+  id    Int    @id @default(autoincrement())
+  name  String
+}
+
+model Post {
+  id            Int    @id @default(autoincrement())
+  influencer_id Int
+  reach_rate    Int
+  type          InfluencerType
+  year          Int
 }
