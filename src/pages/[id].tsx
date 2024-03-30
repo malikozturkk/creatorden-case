@@ -5,19 +5,7 @@ import BreadCrumb from "@/components/BreadCrumb";
 import HomeIcon from "@mui/icons-material/Home";
 import Card from "@/components/Card";
 import { groupSortByTypeAndYear } from "@/hooks/groupSortByTypeAndYear";
-
-export interface DataItem {
-  id: number;
-  influencer_id: number;
-  reach_rate: number;
-  type: "STORY" | "REELS" | "STATIC";
-  year: number;
-}
-
-export interface CardProps {
-  data: DataItem[];
-  id: number;
-}
+import { CardProps } from "@/types/index.types";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;

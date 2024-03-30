@@ -5,15 +5,9 @@ import React, {
   useCallback,
   ReactNode,
 } from "react";
-import {
-  AlertsContainer,
-  BaseAlertProps,
-  AlertProps,
-} from "../components/CustomAlert";
-
-interface AlertContextType {
-  addAlert: (alert: BaseAlertProps) => void;
-}
+import { AlertsContainer } from "../components/CustomAlert";
+import { AlertProps } from "@/types/index.types";
+import { AlertContextType } from "@/types/index.types";
 
 const AlertContext = createContext<AlertContextType | undefined>(undefined);
 

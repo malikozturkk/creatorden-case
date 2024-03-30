@@ -1,12 +1,8 @@
-interface DataItem {
-  year: number;
-  count: number;
-  total_reach_rate: number;
-  percentage_rate?: number;
-  highest?: boolean;
-}
+import { DataItemWithChange } from "@/types/index.types";
 
-export function calculatePercentageAndSort(data: DataItem[]): DataItem[] {
+export function calculatePercentageAndSort(
+  data: DataItemWithChange[]
+): DataItemWithChange[] {
   const totalReachRate = data.reduce(
     (acc, item) => acc + item.total_reach_rate,
     0

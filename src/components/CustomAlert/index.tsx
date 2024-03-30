@@ -1,24 +1,7 @@
 import React, { useEffect } from "react";
 import Alert from "@mui/material/Alert";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-
-export interface BaseAlertProps {
-  message: string;
-  severity: "error" | "warning" | "info" | "success";
-}
-
-export interface AlertProps extends BaseAlertProps {
-  id: number;
-}
-
-interface AlertComponentProps extends AlertProps {
-  removeAlert: (id: number) => void;
-}
-
-interface AlertsContainerProps {
-  alerts: AlertProps[];
-  removeAlert: (id: number) => void;
-}
+import { AlertComponentProps, AlertsContainerProps } from "@/types/index.types";
 
 const AlertComponent: React.FC<AlertComponentProps> = ({
   message,

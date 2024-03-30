@@ -1,16 +1,7 @@
 import React from "react";
 import { calculatePercentageAndSort } from "@/hooks/calculatePercentageAndSort";
 import { calculatePercentageChange } from "@/hooks/calculatePercentageChange";
-
-export interface DataItem {
-  count: number;
-  total_reach_rate: number;
-  year: number;
-}
-
-export interface CardData {
-  [key: string]: DataItem[];
-}
+import { CardData } from "@/types/index.types";
 
 const Card: React.FC<{ data: CardData }> = ({ data }) => {
   console.log(data, "datasasa");

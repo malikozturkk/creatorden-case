@@ -1,13 +1,8 @@
-interface DataItem {
-  year: number;
-  count: number;
-  total_reach_rate: number;
-  percentage_rate: number;
-  highest: boolean;
-  change?: string | null;
-}
+import { DataItemWithChange } from "@/types/index.types";
 
-export function calculatePercentageChange(data: DataItem[]): DataItem[] {
+export function calculatePercentageChange(
+  data: DataItemWithChange[]
+): DataItemWithChange[] {
   data.forEach((item, index) => {
     if (index === 0) {
       item.change = null;

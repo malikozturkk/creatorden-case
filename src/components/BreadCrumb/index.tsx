@@ -1,15 +1,5 @@
 import React from "react";
-
-interface BreadcrumbProps {
-  items: BreadCrumbsItemProps[];
-}
-
-type BreadCrumbsItemProps = {
-  icon?: React.ReactNode;
-  text: string;
-  url?: string;
-  target?: "_blank" | "_self";
-};
+import { BreadcrumbProps, BreadCrumbsItemProps } from "@/types/index.types";
 
 const BreadCrumb: React.FunctionComponent<BreadcrumbProps> = ({ items }) => {
   return (

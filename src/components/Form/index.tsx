@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm, Controller } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import {
   TextField,
   FormControl,
@@ -11,19 +11,8 @@ import { Box, Grid, Input } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { TrendingUp } from "@mui/icons-material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { UseFormReturn } from "react-hook-form";
 import ErrorText from "@/components/ErrorText";
-
-interface FormProps {
-  formMethods: UseFormReturn<{
-    influencerName: string;
-    year: string;
-    type: string;
-    reachRate: number;
-  }>;
-  rate: number;
-  setRate: React.Dispatch<React.SetStateAction<number>>;
-}
+import { FormProps } from "@/types/index.types";
 
 const Form: React.FC<FormProps> = ({ formMethods, rate, setRate }) => {
   const [type, setType] = React.useState("");

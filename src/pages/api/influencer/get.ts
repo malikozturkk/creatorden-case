@@ -1,10 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "@/lib/prisma";
-
-interface Influencer {
-  id: number;
-  name: string;
-}
+import { Influencer } from "@/types/index.types";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {

@@ -1,13 +1,7 @@
-import { DataItem } from "@/pages/[id]";
-
-interface YearlySummary {
-  year: number;
-  count: number;
-  total_reach_rate: number;
-}
+import { YearlySummary, PureDataItem } from "@/types/index.types";
 
 export function groupSortByTypeAndYear(
-  data: DataItem[]
+  data: PureDataItem[]
 ): Record<string, YearlySummary[]> {
   const grouped: Record<string, YearlySummary[]> = {};
 
