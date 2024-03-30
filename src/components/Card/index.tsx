@@ -48,6 +48,7 @@ const Card: React.FC<{ data: CardData }> = ({ data }) => {
                   const change = Number(content.change);
                   return (
                     <div
+                      key={index}
                       className="flex gap-4 items-center text-[#424242] font-bold text-base"
                       style={{
                         flexDirection: lastItem ? "row-reverse" : "row",
@@ -95,13 +96,11 @@ const Card: React.FC<{ data: CardData }> = ({ data }) => {
                       </div>
                       <div className="flex gap-6 items-center justify-center">
                         <div className="font-semibold text-xl text-[#020202]">
-                          {content.year} (Yıl)
+                          {content.year}
                         </div>
-                        <div className="text-[#0a0312]">
-                          {content.count} (Adet)
-                        </div>
+                        <div className="text-[#0a0312]">{content.count}</div>
                         <div className="text-[#5d676b]">
-                          {content.total_reach_rate} (Ort)
+                          {content.total_reach_rate}
                         </div>
                       </div>
                     </div>

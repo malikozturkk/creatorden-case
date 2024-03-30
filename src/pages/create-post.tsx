@@ -142,8 +142,10 @@ const Create = () => {
                         label="Influencer İsmi"
                         onChange={handleChng}
                       >
-                        {data?.data.map((item: any) => (
-                          <MenuItem value={item.id}>{item.name}</MenuItem>
+                        {data?.data.map((item: any, index: number) => (
+                          <MenuItem value={item.id} key={index}>
+                            {item.name}
+                          </MenuItem>
                         ))}
                       </Select>
 
