@@ -34,7 +34,7 @@ const Card: React.FC<{ data: CardData }> = ({ data }) => {
               {type}
             </label>
             <div
-              className="flex flex-row gap-4 items-center justify-between"
+              className="flex flex-col gap-4 p-4 items-center justify-between md:flex-row md:p-0"
               //@ts-ignore
               style={{ backgroundColor: bgColorsLighter[type] }}
             >
@@ -49,16 +49,14 @@ const Card: React.FC<{ data: CardData }> = ({ data }) => {
                   return (
                     <div
                       key={index}
-                      className="flex gap-4 items-center text-[#424242] font-bold text-base"
-                      style={{
-                        flexDirection: lastItem ? "row-reverse" : "row",
-                      }}
+                      className={`flex gap-4 items-center text-[#424242] font-bold flex-row text-base ${
+                        lastItem ? "md:flex-row-reverse" : ""
+                      }`}
                     >
                       <div
-                        className="w-52 flex items-center"
-                        style={{
-                          justifyContent: lastItem ? "flex-end" : "flex-start",
-                        }}
+                        className={`w-52 flex items-center ${
+                          lastItem ? "md:justify-end" : "justify-start"
+                        }`}
                       >
                         {
                           //@ts-ignore
@@ -77,17 +75,17 @@ const Card: React.FC<{ data: CardData }> = ({ data }) => {
                           )
                         }
                         <div
-                          className="text-base font-bold flex items-center justify-center max-w-52 rounded-r-2xl text-white h-16 min-w-12"
+                          className={`text-base font-bold flex items-center justify-center max-w-52 rounded-r-2xl text-white h-16 min-w-12 ${
+                            lastItem
+                              ? "md:rounded-l-2xl md:rounded-r-none"
+                              : "rounded-r-2xl"
+                          }`}
                           style={{
                             backgroundColor: content.highest
                               ? //@ts-ignore
                                 bgColorsNormal[type]
                               : //@ts-ignore
                                 bgColorsLight[type],
-                            borderTopRightRadius: !lastItem ? "1.5rem" : "0",
-                            borderBottomRightRadius: !lastItem ? "1.5rem" : "0",
-                            borderTopLeftRadius: lastItem ? "1.5rem" : "0",
-                            borderBottomLeftRadius: lastItem ? "1.5rem" : "0",
                             width: `${rate}%`,
                           }}
                         >
