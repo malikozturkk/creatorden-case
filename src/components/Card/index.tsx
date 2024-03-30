@@ -47,72 +47,74 @@ const Card: React.FC<{ data: CardData }> = ({ data }) => {
               //@ts-ignore
               style={{ backgroundColor: bgColorsLighter[type] }}
             >
-              {Object.entries(sortedData).map(([year, content], index) => {
-                //@ts-ignore
-                const rate = Number(content.percentage_rate.toFixed(1));
-                const lastItem =
-                  index !== 0 && index + 1 === contentData.length;
-                //@ts-ignore
-                const change = Number(content.change);
-                return (
-                  <div
-                    className="flex gap-4 items-center text-[#424242] font-bold text-base"
-                    style={{
-                      flexDirection: lastItem ? "row-reverse" : "row",
-                    }}
-                  >
+              {Object.entries(percentageChange).map(
+                ([year, content], index) => {
+                  //@ts-ignore
+                  const rate = Number(content.percentage_rate.toFixed(1));
+                  const lastItem =
+                    index !== 0 && index + 1 === contentData.length;
+                  //@ts-ignore
+                  const change = Number(content.change);
+                  return (
                     <div
-                      className="w-52 flex items-center"
+                      className="flex gap-4 items-center text-[#424242] font-bold text-base"
                       style={{
-                        justifyContent: lastItem ? "flex-end" : "flex-start",
+                        flexDirection: lastItem ? "row-reverse" : "row",
                       }}
                     >
-                      {
-                        //@ts-ignore
-                        content.change && (
-                          <label
-                            className={`${
-                              change > 0
-                                ? "text-green-500"
-                                : change === 0
-                                ? "text-[#919191]"
-                                : "text-red-500"
-                            } mr-3`}
-                          >
-                            {change > 0 ? "+" + change : change}
-                          </label>
-                        )
-                      }
                       <div
-                        className="text-base font-bold flex items-center justify-center max-w-52 rounded-r-2xl text-white h-16 min-w-12"
+                        className="w-52 flex items-center"
                         style={{
-                          backgroundColor: content.highest
-                            ? //@ts-ignore
-                              bgColorsNormal[type]
-                            : //@ts-ignore
-                              bgColorsLight[type],
-                          borderTopRightRadius: !lastItem ? "1.5rem" : "0",
-                          borderBottomRightRadius: !lastItem ? "1.5rem" : "0",
-                          borderTopLeftRadius: lastItem ? "1.5rem" : "0",
-                          borderBottomLeftRadius: lastItem ? "1.5rem" : "0",
-                          width: `${rate}%`,
+                          justifyContent: lastItem ? "flex-end" : "flex-start",
                         }}
                       >
-                        {rate}%
+                        {
+                          //@ts-ignore
+                          content.change && (
+                            <label
+                              className={`${
+                                change > 0
+                                  ? "text-green-500"
+                                  : change === 0
+                                  ? "text-[#919191]"
+                                  : "text-red-500"
+                              } mr-3`}
+                            >
+                              {change > 0 ? "+" + change : change}
+                            </label>
+                          )
+                        }
+                        <div
+                          className="text-base font-bold flex items-center justify-center max-w-52 rounded-r-2xl text-white h-16 min-w-12"
+                          style={{
+                            backgroundColor: content.highest
+                              ? //@ts-ignore
+                                bgColorsNormal[type]
+                              : //@ts-ignore
+                                bgColorsLight[type],
+                            borderTopRightRadius: !lastItem ? "1.5rem" : "0",
+                            borderBottomRightRadius: !lastItem ? "1.5rem" : "0",
+                            borderTopLeftRadius: lastItem ? "1.5rem" : "0",
+                            borderBottomLeftRadius: lastItem ? "1.5rem" : "0",
+                            width: `${rate}%`,
+                          }}
+                        >
+                          {rate}%
+                        </div>
+                      </div>
+                      <div className="flex gap-6 items-center justify-center">
+                        <div className="font-semibold text-xl text-[#020202]">
+                          {content.year}
+                        </div>
+                        <div className="text-[#0a0312]">{content.count}</div>
+                        <div className="text-[#5d676b]">
+                          {content.total_reach_rate}
+                        </div>
                       </div>
                     </div>
-                    <div className="flex gap-6 items-center justify-center">
-                      <div className="font-semibold text-xl text-[#020202]">
-                        {content.year}
-                      </div>
-                      <div className="text-[#0a0312]">{content.count}</div>
-                      <div className="text-[#5d676b]">
-                        {content.total_reach_rate}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                }
+              )}
             </div>
           </div>
         );
