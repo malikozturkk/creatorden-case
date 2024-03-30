@@ -10,7 +10,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     });
     return res.status(200).json("Influencer başarıyla silindi.");
   } catch (error) {
-    console.log(error, "error");
     return res.status(200).json("Id'ye ait kullanıcı bulunamadı");
   }
 };
