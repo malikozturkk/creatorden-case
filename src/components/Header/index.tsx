@@ -9,26 +9,31 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import HomeIcon from "@mui/icons-material/Home";
-import { AddCircle, Edit, RemoveCircle } from "@mui/icons-material";
+import { AddCircle, Edit, Person2 } from "@mui/icons-material";
 
 const iconStyle = "w-5 h-5";
 
 const pages = [
   { href: "/", name: "Home", icon: <HomeIcon className={iconStyle} /> },
   {
-    href: "/create",
+    href: "/create-influencer",
     name: "Influencer Ekle",
-    icon: <AddCircle className={iconStyle} />,
+    icon: <Person2 className={iconStyle} />,
   },
   {
-    href: "/edit",
+    href: "/edit-influencer",
     name: "Influencer Düzenle",
     icon: <Edit className={iconStyle} />,
   },
   {
-    href: "/remove",
-    name: "Influencer Sil",
-    icon: <RemoveCircle className={iconStyle} />,
+    href: "/create-post",
+    name: "Post Ekle",
+    icon: <AddCircle className={iconStyle} />,
+  },
+  {
+    href: "/edit-post",
+    name: "Post Düzenle",
+    icon: <Edit className={iconStyle} />,
   },
 ];
 

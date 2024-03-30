@@ -1,36 +1,40 @@
-import React from "react";
 import axios from "axios";
-import { useForm } from "react-hook-form";
 import HomeIcon from "@mui/icons-material/Home";
+import { Person2 } from "@mui/icons-material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import BreadCrumb from "@/components/BreadCrumb";
-import { AddCircle } from "@mui/icons-material";
-import Form from "@/components/Form";
+import { useAlert } from "@/context/useAlert";
+import React from "react";
+import { useForm, Controller } from "react-hook-form";
+import { TextField, FormControl } from "@mui/material/";
+import ErrorText from "@/components/ErrorText";
 
 const Create = () => {
-  const [rate, setRate] = React.useState(0);
+  const { addAlert } = useAlert();
   const formMethods = useForm({
     defaultValues: {
       influencerName: "",
-      year: "",
-      type: "",
-      reachRate: 0,
     },
   });
   const { handleSubmit } = formMethods;
   const onSubmit = async (data: any) => {
-    const req = await axios.post("api/createInfluencer", {
+    const req = await axios.post("api/influencer/create", {
       influencerDatas: [
         {
-          influencer: data.influencerName,
-          year: parseInt(data.year),
-          type: data.type,
-          reach_rate: rate,
+          name: data.influencerName,
         },
       ],
     });
+    addAlert({ message: req.data, severity: "success" });
     return req;
   };
+
+  const {
+    control,
+    register,
+    formState: { errors },
+  } = formMethods;
+
   return (
     <>
       <BreadCrumb
@@ -53,7 +57,7 @@ const Create = () => {
           {
             text: "Influencer Ekle",
             icon: (
-              <AddCircle
+              <Person2
                 fontSize="small"
                 style={{
                   marginLeft: "5px",
@@ -69,7 +73,33 @@ const Create = () => {
         <div className="flex flex-col items-center justify-center h-[75vh]">
           <div className="flex flex-col items-center justify-center bg-[#0F1924] border border-solid border-[#192028] rounded-lg p-7 gap-5 w-[70%] md:w-1/2">
             <h1 className="text-xl font-bold text-white">Influencer Ekle</h1>
-            <Form formMethods={formMethods} rate={rate} setRate={setRate} />
+            <Controller
+              name="influencerName"
+              control={control}
+              render={({ field }) => (
+                <FormControl className="w-full" variant="outlined">
+                  <TextField
+                    {...field}
+                    error={errors?.influencerName ? true : false}
+                    color="success"
+                    {...register("influencerName", {
+                      required: true,
+                      minLength: 2,
+                    })}
+                    id="outlined-basic"
+                    label="Influencer Adı"
+                    variant="outlined"
+                  />
+                  {errors.influencerName ? (
+                    errors.influencerName?.type === "required" ? (
+                      <ErrorText message="Influencer İsmi Zorunlu" />
+                    ) : (
+                      <ErrorText message="Influencer İsmi Minimum 2 Karakter Olmalı" />
+                    )
+                  ) : null}
+                </FormControl>
+              )}
+            />
             <LoadingButton
               size="large"
               type="submit"
