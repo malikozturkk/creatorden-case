@@ -10,7 +10,7 @@ interface DataItem {
 export function calculatePercentageChange(data: DataItem[]): DataItem[] {
   data.forEach((item, index) => {
     if (index === 0) {
-      item.change = null; // İlk öğe için değişim hesaplanamaz
+      item.change = null;
     } else {
       const previousItem = data[index - 1];
       const percentageChange =
