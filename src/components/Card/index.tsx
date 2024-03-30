@@ -4,7 +4,6 @@ import { calculatePercentageChange } from "@/hooks/calculatePercentageChange";
 import { CardData } from "@/types/index.types";
 
 const Card: React.FC<{ data: CardData }> = ({ data }) => {
-  console.log(data, "datasasa");
   const bgColorsNormal = {
     STORY: "#8001e2",
     REELS: "#0ca6da",
@@ -25,6 +24,7 @@ const Card: React.FC<{ data: CardData }> = ({ data }) => {
   return (
     <div className="w-full flex flex-col items-start gap-10 flex-wrap justify-center">
       {Object.entries(data).map(([type, contentData]) => {
+        // @ts-ignore
         const sortedData = calculatePercentageAndSort(contentData);
         // @ts-ignore
         const percentageChange = calculatePercentageChange(sortedData);
@@ -95,11 +95,13 @@ const Card: React.FC<{ data: CardData }> = ({ data }) => {
                       </div>
                       <div className="flex gap-6 items-center justify-center">
                         <div className="font-semibold text-xl text-[#020202]">
-                          {content.year}
+                          {content.year} (Yıl)
                         </div>
-                        <div className="text-[#0a0312]">{content.count}</div>
+                        <div className="text-[#0a0312]">
+                          {content.count} (Adet)
+                        </div>
                         <div className="text-[#5d676b]">
-                          {content.total_reach_rate}
+                          {content.total_reach_rate} (Ort)
                         </div>
                       </div>
                     </div>
