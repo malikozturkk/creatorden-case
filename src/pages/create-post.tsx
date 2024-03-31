@@ -20,6 +20,7 @@ import { TrendingUp } from "@mui/icons-material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import ErrorText from "@/components/ErrorText";
 import { GetInfluencer } from "@/services";
+import Loader from "@/components/Loader";
 
 const Create = () => {
   const [rate, setRate] = React.useState(0);
@@ -76,7 +77,7 @@ const Create = () => {
     return req;
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loader />;
   return (
     <>
       <BreadCrumb

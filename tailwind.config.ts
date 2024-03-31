@@ -8,7 +8,17 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        fade: {
+          "0%, 100%": { opacity: 1 },
+          "50%": { opacity: 0.5 },
+        },
+      },
+      animation: {
+        fade: "fade 1.5s ease-in-out infinite",
+      },
+    },
   },
   plugins: [],
 };
