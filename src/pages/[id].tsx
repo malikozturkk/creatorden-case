@@ -8,6 +8,7 @@ import { groupSortByTypeAndYear } from "@/hooks/groupSortByTypeAndYear";
 import { CardProps } from "@/types/index.types";
 import { PriorityHigh } from "@mui/icons-material";
 import Winner from "@/components/Winner";
+import NoData from "@/components/NoData";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
@@ -48,7 +49,7 @@ const Influencer: NextPage<CardProps> = ({ data, id }) => {
         ]}
       />
       {isEmpty(groupedData) ? (
-        "data yok"
+        <NoData />
       ) : (
         <div className="bg-[#161b22] px-5 flex flex-col justify-center items-center gap-10 rounded-xl mt-12 md:p-0">
           <div className="flex justify-between w-full mt-8">
