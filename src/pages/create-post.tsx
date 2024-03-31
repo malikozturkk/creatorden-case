@@ -19,10 +19,7 @@ import Typography from "@mui/material/Typography";
 import { TrendingUp } from "@mui/icons-material";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import ErrorText from "@/components/ErrorText";
-
-const GetInfluencer = async () => {
-  return await axios.get("api/influencer/get");
-};
+import { GetInfluencer } from "@/services";
 
 const Create = () => {
   const [rate, setRate] = React.useState(0);

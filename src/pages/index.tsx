@@ -8,10 +8,7 @@ import { Person2 } from "@mui/icons-material";
 import BreadCrumb from "@/components/BreadCrumb";
 import { useInfluencers } from "@/context/useTopThree";
 import Winner from "@/components/Winner";
-
-const GetInfluencer = async () => {
-  return await axios.get("api/influencer/get");
-};
+import { GetInfluencer } from "@/services";
 
 const Home = () => {
   const { data: infData, isLoading } = useQuery({

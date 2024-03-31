@@ -6,9 +6,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import Card from "@/components/Card";
 import { groupSortByTypeAndYear } from "@/hooks/groupSortByTypeAndYear";
 import { CardProps } from "@/types/index.types";
-import { useInfluencers } from "@/context/useTopThree";
 import { PriorityHigh } from "@mui/icons-material";
-import { winnerIcons } from "@/hooks/winnerIcon";
 import Winner from "@/components/Winner";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

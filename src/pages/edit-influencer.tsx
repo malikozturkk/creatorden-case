@@ -19,12 +19,11 @@ import {
   GridRowId,
   GridRowEditStopReasons,
 } from "@mui/x-data-grid";
-
-const GetInfluencer = async () => {
-  return await axios.get("api/influencer/get");
-};
+import { GetInfluencer } from "@/services";
+import { useAlert } from "@/context/useAlert";
 
 const Edit = () => {
+  const { addAlert } = useAlert();
   const queryClient = useQueryClient();
   const { data, isLoading } = useQuery({
     queryKey: ["data"],
@@ -62,6 +61,7 @@ const Edit = () => {
     queryClient.invalidateQueries({
       queryKey: ["data"],
     });
+    addAlert({ message: req.data, severity: "success" });
     return req;
   };
 
@@ -76,6 +76,7 @@ const Edit = () => {
     queryClient.invalidateQueries({
       queryKey: ["data"],
     });
+    addAlert({ message: req.data, severity: "success" });
     return req;
   };
 

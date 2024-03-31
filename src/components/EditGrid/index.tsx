@@ -7,6 +7,7 @@ import CancelIcon from "@mui/icons-material/Close";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import Loader from "@/components/Loader";
 import axios from "axios";
+import { useAlert } from "@/context/useAlert";
 import {
   GridRowModesModel,
   GridRowModes,
@@ -17,12 +18,10 @@ import {
   GridRowId,
   GridRowEditStopReasons,
 } from "@mui/x-data-grid";
-
-const GetPosts = async () => {
-  return await axios.get("api/post/get");
-};
+import { GetPosts } from "@/services";
 
 const EditGrid = () => {
+  const { addAlert } = useAlert();
   const queryClient = useQueryClient();
   const { data, isLoading } = useQuery({
     queryKey: ["data"],
@@ -63,6 +62,7 @@ const EditGrid = () => {
     queryClient.invalidateQueries({
       queryKey: ["data"],
     });
+    addAlert({ message: req.data, severity: "success" });
     return req;
   };
 
@@ -77,6 +77,7 @@ const EditGrid = () => {
     queryClient.invalidateQueries({
       queryKey: ["data"],
     });
+    addAlert({ message: req.data, severity: "success" });
     return req;
   };
 

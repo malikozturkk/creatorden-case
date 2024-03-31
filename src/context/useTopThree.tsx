@@ -7,20 +7,9 @@ import React, {
 } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { GetInfluencer } from "@/services";
 import { calculateTopInfluencers } from "@/hooks/calculateTopThreeInfluencers";
-
-interface Influencer {
-  id: number;
-  name: string;
-}
-
-interface Performance {
-  id: number;
-  influencer_id: number;
-  reach_rate: number;
-  type: string;
-  year: number;
-}
+import { GetAllPosts } from "@/services";
 
 interface AverageRate {
   name: string;
@@ -32,12 +21,10 @@ interface InfluencerContextType {
   isLoading: boolean;
 }
 
-// Context'in oluşturulması ve başlangıç değerinin tanımlanması
 const TopThreeContext = createContext<InfluencerContextType | undefined>(
   undefined
 );
 
-// Provider Component'i
 interface InfluencerProviderProps {
   children: ReactNode;
 }
@@ -45,14 +32,6 @@ interface InfluencerProviderProps {
 export const TopThreeProvider: React.FC<InfluencerProviderProps> = ({
   children,
 }) => {
-  const GetInfluencer = async (): Promise<any> => {
-    return await axios.get("api/influencer/get");
-  };
-
-  const GetPosts = async (): Promise<any> => {
-    return await axios.get("api/post/get-all");
-  };
-
   const { data: infData, isLoading: isInfLoading } = useQuery({
     queryKey: ["infData"],
     queryFn: GetInfluencer,
@@ -60,7 +39,7 @@ export const TopThreeProvider: React.FC<InfluencerProviderProps> = ({
 
   const { data: postData, isLoading: isPostLoading } = useQuery({
     queryKey: ["postData"],
-    queryFn: GetPosts,
+    queryFn: GetAllPosts,
   });
 
   const [topThree, setTopThree] = useState<AverageRate[]>([]);
@@ -81,7 +60,6 @@ export const TopThreeProvider: React.FC<InfluencerProviderProps> = ({
   );
 };
 
-// Custom hook
 export const useInfluencers = (): InfluencerContextType => {
   const context = useContext(TopThreeContext);
   if (context === undefined) {
