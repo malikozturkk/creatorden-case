@@ -1,15 +1,17 @@
-# Dockerfile
-FROM node:latest
+FROM node:18
 
-# Çalışma dizinini belirtin
 WORKDIR /usr/src/app
 
-# package.json ve package-lock.json'ı kopyalayın ve bağımlılıkları yükleyin
-COPY package*.json ./
-RUN npm install
+COPY package.json yarn.lock ./
 
-# Proje dosyalarını kopyalayın
+RUN yarn install
+
+RUN yarn build
+
 COPY . .
 
-# Next.js uygulamasını başlatın
-CMD ["npm", "run", "dev"]
+RUN npx prisma generate
+
+EXPOSE 3000
+
+CMD ["yarn", "start"]
