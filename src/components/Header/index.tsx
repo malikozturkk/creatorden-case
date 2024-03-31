@@ -102,8 +102,15 @@ const Header = () => {
                   textAlign="center"
                   className="my-2 normal-case flex items-center justify-center gap-2"
                 >
-                  {page.icon}
-                  {page.name}
+                  <Button
+                    className="text-white my-2 normal-case flex items-center justify-center gap-2"
+                    key={page.name}
+                    onClick={handleCloseNavMenu}
+                    href={page.href}
+                  >
+                    {page.icon}
+                    {page.name}
+                  </Button>
                 </Typography>
               </MenuItem>
             ))}

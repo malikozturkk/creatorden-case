@@ -8,6 +8,7 @@ import { groupSortByTypeAndYear } from "@/hooks/groupSortByTypeAndYear";
 import { CardProps } from "@/types/index.types";
 import { useInfluencers } from "@/context/useTopThree";
 import { PriorityHigh } from "@mui/icons-material";
+import { winnerIcons } from "@/hooks/winnerIcon";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
@@ -66,14 +67,22 @@ const Influencer: NextPage<CardProps> = ({ data, id }) => {
           </div>
           <Card data={groupedData} />
 
-          <div className="flex gap-8 min-h-16 w-full flex-col bg-white p-3 items-center text-black rounded-xl md:rounded-none md:flex-row">
+          <div className="flex gap-8 min-h-16 w-full flex-col bg-white p-3 items-center text-black justify-center rounded-xl md:rounded-none md:flex-row">
             <label className="font-bold text-lg">
               Top 3 Influencers By Reach Rate
             </label>
             {topThree.map((item, index) => (
-              <div className="flex items-center gap-2" key={index}>
-                <label className="font-bold">{item.name}</label>
-                <label className="font-bold">{item.averageRate}</label>
+              <div
+                className="flex items-center gap-2 justify-center flex-col"
+                key={index}
+              >
+                <label className="font-bold flex flex-col items-center justify-center">
+                  {winnerIcons[index + 1]}
+                  {item.name}
+                </label>
+                <label className="font-bold">
+                  {item.averageRate.toFixed(1)}
+                </label>
               </div>
             ))}
           </div>

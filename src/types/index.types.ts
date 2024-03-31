@@ -120,3 +120,7 @@ export interface Influencer {
   id: number;
   name: string;
 }
+
+export type WinnerIconType = {
+  [key: number]: JSX.Element;
+};
