@@ -1,5 +1,5 @@
 import React from "react";
-import { winnerIcons } from "@/hooks/winnerIcon";
+import { winnerIcons } from "@/lib/winnerIcon";
 import { useInfluencers } from "@/context/useTopThree";
 
 const Winner = () => {

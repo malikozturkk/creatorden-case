@@ -8,7 +8,7 @@ import React, {
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { GetInfluencer } from "@/services";
-import { calculateTopInfluencers } from "@/hooks/calculateTopThreeInfluencers";
+import { calculateTopInfluencers } from "@/lib/calculateTopThreeInfluencers";
 import { GetAllPosts } from "@/services";
 
 interface AverageRate {

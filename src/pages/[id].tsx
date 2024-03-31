@@ -4,12 +4,12 @@ import axios from "axios";
 import BreadCrumb from "@/components/BreadCrumb";
 import HomeIcon from "@mui/icons-material/Home";
 import Card from "@/components/Card";
-import { groupSortByTypeAndYear } from "@/hooks/groupSortByTypeAndYear";
+import { groupSortByTypeAndYear } from "@/lib/groupSortByTypeAndYear";
 import { CardProps } from "@/types/index.types";
 import { PriorityHigh } from "@mui/icons-material";
 import Winner from "@/components/Winner";
 import NoData from "@/components/NoData";
-import { feedbackCalculator } from "@/hooks/feedbackCalculator";
+import { feedbackCalculator } from "@/lib/feedbackCalculator";
 import Feedback from "@/components/Feedback";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

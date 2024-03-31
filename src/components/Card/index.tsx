@@ -1,6 +1,6 @@
 import React from "react";
-import { calculatePercentageAndSort } from "@/hooks/calculatePercentageAndSort";
-import { calculatePercentageChange } from "@/hooks/calculatePercentageChange";
+import { calculatePercentageAndSort } from "@/lib/calculatePercentageAndSort";
+import { calculatePercentageChange } from "@/lib/calculatePercentageChange";
 import { CardData } from "@/types/index.types";
 
 const Card: React.FC<{ data: CardData }> = ({ data }) => {
