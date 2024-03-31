@@ -21,7 +21,7 @@ const Feedback: React.FC<FeedbackProps> = ({ feedbacks }) => {
         const color = colors[feedback?.type];
         return (
           <div
-            className="rounded-xl p-5 flex flex-row justify-between w-full"
+            className="rounded-xl p-5 flex flex-row justify-between w-full items-center"
             key={index}
             style={{
               border: `4px solid ${color}`,

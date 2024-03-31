@@ -34,7 +34,7 @@ const Card: React.FC<{ data: CardData }> = ({ data }) => {
               {type}
             </label>
             <div
-              className="flex flex-col gap-4 p-4 items-center rounded-xl justify-between md:flex-row md:p-0 md:rounded-none"
+              className="flex flex-col gap-4 py-4 items-start rounded-xl justify-between md:items-center md:flex-row md:p-0 md:rounded-none"
               //@ts-ignore
               style={{ backgroundColor: bgColorsLighter[type] }}
             >
@@ -49,12 +49,14 @@ const Card: React.FC<{ data: CardData }> = ({ data }) => {
                   return (
                     <div
                       key={index}
-                      className={`flex gap-4 items-center text-[#424242] font-bold flex-row text-base ${
-                        lastItem ? "md:flex-row-reverse" : ""
+                      className={`flex gap-4 items-center text-[#424242] font-bold md:border-none md:p-0 flex-row  w-full md:w-[initial] text-base ${
+                        lastItem
+                          ? "md:flex-row-reverse"
+                          : "border-solid border-[#424242] border-b pb-4"
                       }`}
                     >
                       <div
-                        className={`w-52 flex items-center ${
+                        className={`w-52 flex flex-col gap-4 md:flex-row items-start md:items-center ${
                           lastItem ? "md:justify-end" : "justify-start"
                         }`}
                       >
