@@ -7,6 +7,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import { Person2 } from "@mui/icons-material";
 import BreadCrumb from "@/components/BreadCrumb";
 import { useInfluencers } from "@/context/useTopThree";
+import Winner from "@/components/Winner";
 
 const GetInfluencer = async () => {
   return await axios.get("api/influencer/get");
@@ -57,6 +58,7 @@ const Home = () => {
           },
         ]}
       />
+      <Winner />
       <div className="flex flex-col items-center gap-6 p-6 flex-wrap justify-center md:flex-row">
         {infData?.data.length > 0
           ? infData?.data.map((item: any) => (
