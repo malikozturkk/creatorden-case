@@ -1,3 +1,6 @@
-Projede postgresql yer aldığı için dockerize edilmiştir. Yapılması gerekenler:
-1. Ayaklandırmak için cihazda Docker uygulamasının kurulu olduğundan emin olun.
-2. docker-compose up komutunu çalıştırarak hem database hem client local'lerinizi ayaklandırınız.
+Proje Kurulumu
+1. Node versionun 18 olduğundan emin olunur.
+2. PostgreSQL kurulu olduğundan emin olunur.
+3. yarn install komutu çalıştırılır.
+4. yarn build komutu çalıştırılır.
+5. yarn start komutu ile proje ayaklandırılır.
