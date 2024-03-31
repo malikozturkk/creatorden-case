@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 
 const NoData = () => {
-  const noDataContainer = React.useRef(null);
-  lottie.loadAnimation({
-    name: "animationOne",
-    //@ts-ignore
-    container: noDataContainer.current,
-    renderer: "svg",
-    loop: true,
-    autoplay: false,
-    animationData: require("./notdata.json"),
-  });
+  const noDataContainer = useRef(null);
 
-  lottie.play("animationOne");
-  return <div className="w-full" ref={noDataContainer} />;
+  useEffect(() => {
+    const instance = lottie.loadAnimation({
+      //@ts-ignore
+      container: noDataContainer.current,
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      animationData: require("./notdata.json"),
+    });
+    return () => instance.destroy();
+  }, []);
+
+  return <div className="w-[70%] mx-auto" ref={noDataContainer} />;
 };
+
 export default NoData;

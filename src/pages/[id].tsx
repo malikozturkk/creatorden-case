@@ -9,6 +9,8 @@ import { CardProps } from "@/types/index.types";
 import { PriorityHigh } from "@mui/icons-material";
 import Winner from "@/components/Winner";
 import NoData from "@/components/NoData";
+import { feedbackCalculator } from "@/hooks/feedbackCalculator";
+import Feedback from "@/components/Feedback";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
@@ -23,6 +25,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 const Influencer: NextPage<CardProps> = ({ data, id }) => {
   const groupedData = groupSortByTypeAndYear(data);
+  //@ts-ignore
+  const feedbacks = feedbackCalculator(groupedData);
   const isEmpty = (obj: object): boolean => Object.keys(obj).length === 0;
   return (
     <div>
@@ -67,6 +71,9 @@ const Influencer: NextPage<CardProps> = ({ data, id }) => {
           <Card data={groupedData} />
 
           <Winner />
+          {feedbacks && feedbacks.length > 0 && (
+            <Feedback feedbacks={feedbacks} />
+          )}
           <label className="mb-8 text-[#ffa726]">
             <PriorityHigh />
             Not: hesaplama yapılırken ağırlıklı ortalaması baz alınarak
