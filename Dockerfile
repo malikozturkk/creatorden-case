@@ -1,16 +1,17 @@
 FROM node:18
 
-WORKDIR /usr/src/app
+COPY . /application
+WORKDIR /application
 
 COPY package.json yarn.lock ./
 
 RUN yarn install
 
-RUN yarn build
 
 COPY . .
 
-RUN npx prisma generate
+
+RUN yarn build
 
 EXPOSE 3000
 
