@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Header from "@/components/Header";
 import { AlertProvider } from "@/context/useAlert";
+import { TopThreeProvider } from "@/context/useTopThree";
 
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient({
@@ -22,11 +23,13 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={darkTheme}>
-        <CssBaseline />
-        <AlertProvider>
-          <Header />
-          <Component {...pageProps} />
-        </AlertProvider>
+        <TopThreeProvider>
+          <CssBaseline />
+          <AlertProvider>
+            <Header />
+            <Component {...pageProps} />
+          </AlertProvider>
+        </TopThreeProvider>
       </ThemeProvider>
     </QueryClientProvider>
   );

@@ -6,16 +6,21 @@ import Link from "next/link";
 import HomeIcon from "@mui/icons-material/Home";
 import { Person2 } from "@mui/icons-material";
 import BreadCrumb from "@/components/BreadCrumb";
+import { useInfluencers } from "@/context/useTopThree";
 
 const GetInfluencer = async () => {
   return await axios.get("api/influencer/get");
 };
 
 const Home = () => {
-  const { data, isLoading } = useQuery({
-    queryKey: ["data"],
+  const { data: infData, isLoading } = useQuery({
+    queryKey: ["infData"],
     queryFn: GetInfluencer,
   });
+
+  const { topThree } = useInfluencers();
+  console.log(topThree, "topThree");
+
   if (isLoading) return <Loader />;
 
   return (
@@ -53,8 +58,8 @@ const Home = () => {
         ]}
       />
       <div className="flex flex-col items-center gap-6 p-6 flex-wrap justify-center md:flex-row">
-        {data?.data.length > 0
-          ? data?.data.map((item: any) => (
+        {infData?.data.length > 0
+          ? infData?.data.map((item: any) => (
               <Link
                 href={`/${item.id}`}
                 key={item.id}
