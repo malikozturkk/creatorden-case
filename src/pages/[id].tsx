@@ -14,7 +14,8 @@ import Feedback from "@/components/Feedback";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
-  const res = await axios.get("http://localhost:3000/api/post/get", {
+  const url = process.env.NEXT_PUBLIC_API_URL;
+  const res = await axios.get(`${url}/api/post/get`, {
     params: { influencer_id: id },
   });
 
