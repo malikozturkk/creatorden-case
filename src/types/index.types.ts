@@ -90,12 +90,14 @@ export interface DataItemWithChange {
   count: number;
   total_reach_rate: number;
   percentage_rate: number;
+  average_reach_rate: number;
   highest: boolean;
   change?: string | null;
 }
 
 export interface YearlySummary {
   year: number;
+  average_reach_rate?: number;
   count: number;
   total_reach_rate: number;
 }
@@ -104,6 +106,7 @@ export interface PureDataItem {
   id: number;
   influencer_id: number;
   reach_rate: number;
+  average_reach_rate: number;
   type: "STORY" | "REELS" | "STATIC";
   year: number;
 }

@@ -34,7 +34,7 @@ const Card: React.FC<{ data: CardData }> = ({ data }) => {
               {type}
             </label>
             <div
-              className="flex flex-col gap-4 p-4 items-center justify-between md:flex-row md:p-0"
+              className="flex flex-col gap-4 p-4 items-center rounded-xl justify-between md:flex-row md:p-0 md:rounded-none"
               //@ts-ignore
               style={{ backgroundColor: bgColorsLighter[type] }}
             >

@@ -6,6 +6,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import Card from "@/components/Card";
 import { groupSortByTypeAndYear } from "@/hooks/groupSortByTypeAndYear";
 import { CardProps } from "@/types/index.types";
+import { PriorityHigh } from "@mui/icons-material";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.query;
@@ -48,7 +49,7 @@ const Influencer: NextPage<CardProps> = ({ data, id }) => {
       {isEmpty(groupedData) ? (
         "data yok"
       ) : (
-        <div className="bg-[#161b22] flex flex-col justify-center items-center gap-6 rounded-xl mt-12">
+        <div className="bg-[#161b22] px-5 flex flex-col justify-center items-center gap-8 rounded-xl mt-12 md:p-0">
           <div className="flex justify-between w-full mt-8">
             <div className="bg-[#424242] p-3 rounded-r-lg text-2xl flex items-center">
               REACH RATE
@@ -62,6 +63,11 @@ const Influencer: NextPage<CardProps> = ({ data, id }) => {
             </div>
           </div>
           <Card data={groupedData} />
+          <label className="mb-8 text-[#ffa726]">
+            <PriorityHigh />
+            Not: hesaplama yapılırken ağırlıklı ortalaması baz alınarak
+            yapılmıştır.
+          </label>
         </div>
       )}
     </div>

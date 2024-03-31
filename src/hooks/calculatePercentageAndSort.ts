@@ -4,13 +4,13 @@ export function calculatePercentageAndSort(
   data: DataItemWithChange[]
 ): DataItemWithChange[] {
   const totalReachRate = data.reduce(
-    (acc, item) => acc + item.total_reach_rate,
+    (acc, item) => acc + item.average_reach_rate,
     0
   );
 
   const updatedData = data.map((item) => ({
     ...item,
-    percentage_rate: (item.total_reach_rate / totalReachRate) * 100,
+    percentage_rate: (item.average_reach_rate / totalReachRate) * 100,
   }));
 
   const highestPercentageRate = Math.max(
